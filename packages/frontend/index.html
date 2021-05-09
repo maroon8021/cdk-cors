@@ -9,12 +9,17 @@
 <body>
   <script>
     console.log("hoge")
-    fetch('{API-GATEWAY-ENDPOINT}', {
-      method: 'GET',
-      // headers: { ここは書くとpreflightでコケる
-      //   'Content-Type': 'application/json'
-      // }
-    })
+    fetch('ENDPOINT', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ query: `
+        query{
+          hello
+        }
+      ` 
+    })})
     .then(response => response.json())
     .then(data => console.log(data));
   </script>
